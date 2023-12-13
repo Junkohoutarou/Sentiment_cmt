@@ -11,9 +11,6 @@ st.title('Sentiment analysis from Vietnamese students’ feedback')
 image = Image.open('vsfc.jpg')
 st.image(image)
 
-input_ec = open('ec_vsfc.pkl', 'rb')
-encoder = pkl.load(input_ec)
-
 input_md = open('lrc_vsfc.pkl', 'rb')
 model = pkl.load(input_md)
 
@@ -22,8 +19,11 @@ txt = st.text_area('', '')
 
 if txt != '':
     if st.button('Predict'):
-        feature_vector = encoder.transform([txt])
-        label = str((model.predict(feature_vector))[0])
+        # Chuyển đổi phản hồi thành vector đặc trưng (nếu cần)
+        # feature_vector = encode_feedback(txt)
+        
+        # Dự đoán tâm trạng bằng cách sử dụng chỉ model
+        label = str((model.predict([txt]))[0])
 
         st.header('Result')
         st.text(class_list[label])
