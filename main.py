@@ -11,7 +11,7 @@ st.title('Sentiment analysis from Vietnamese students’ feedback')
 image = Image.open('vsfc.jpg')
 st.image(image)
 
-input_md = open('lrc_vsfc.pkl', 'rb')
+input_md = open('models.pkl', 'rb')
 model = pkl.load(input_md)
 
 st.header('Write a feedback')
