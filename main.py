@@ -14,16 +14,22 @@ st.image(image)
 input_md = open('models.pkl', 'rb')
 model = pkl.load(input_md)
 
-st.header('Write a feedback')
-txt = st.text_area('', '')
+if hasattr(model, 'predict'):
+    st.header('Write a feedback')
+    txt = st.text_area('', '')
 
-if txt != '':
-    if st.button('Predict'):
-        # Chuyển đổi phản hồi thành vector đặc trưng (nếu cần)
-        # feature_vector = encode_feedback(txt)
-        
-        # Dự đoán tâm trạng bằng cách sử dụng chỉ model
-        label = str((model.predict([txt]))[0])
+    if txt != '':
+        if st.button('Predict'):
+            try:
+                # Thực hiện dự đoán
+                prediction = model.predict([txt])
 
-        st.header('Result')
-        st.text(class_list[label])
+                # Chuyển đổi kết quả thành string để tránh lỗi Attribute Error
+                label = str(prediction[0])
+
+                st.header('Result')
+                st.text(class_list[label])
+            except Exception as e:
+                st.write(f"Error during prediction: {e}")
+else:
+    st.write("Model object does not have 'predict' method.")
