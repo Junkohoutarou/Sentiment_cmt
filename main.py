@@ -14,7 +14,7 @@ st.image(image)
 input_ec = open('ec_model.pkl', 'rb')
 encoder = pkl.load(input_ec)
 
-input_md = open('lrc_model.pkl', 'rb')
+input_md = open('model.pkl', 'rb')
 model = pkl.load(input_md)
 
 st.header('Write a feedback')
