@@ -20,13 +20,5 @@ model = pkl.load(input_md)
 st.header('Write a feedback')
 txt = st.text_area('', '')
 
-if txt != '':
-    if hasattr(model, 'predict'):
-        label = str(model.predict(feature_vector)[0])
-    else:
-        st.error("Error: 'model' does not have a 'predict' method.")
-        st.stop()
-
-
-        st.header('Result')
-        st.text(class_list[label])
+prediction_result = model.predict(feature_vector)
+print(prediction_result)
