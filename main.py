@@ -41,3 +41,7 @@ txt = st.text_area('', '')
 if txt != '':
     feature_vector = encoder.transform([txt])
     prediction_result = model.predict(feature_vector)
+
+    st.header('Result')
+    st.text(class_list[str(prediction_result[0])])
+
