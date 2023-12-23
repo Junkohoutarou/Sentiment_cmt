@@ -34,3 +34,10 @@ except FileNotFoundError:
 except Exception as e:
     st.error(f"An error occurred while loading 'model.pkl': {e}")
     st.stop()
+
+st.header('Write a feedback')
+txt = st.text_area('', '')
+
+if txt != '':
+    feature_vector = encoder.transform([txt])
+    prediction_result = model.predict(feature_vector)
