@@ -10,4 +10,4 @@ st.title("Sentiment analysis from Vietnamese students’ feedback")
 
 image = Image.open('vsfc.jpg')
 st.image(image)
-x
+
