@@ -5,4 +5,12 @@ body {
     flex-direction: column;
     align-items: center;
 }
+.st-ef {
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
+h1 {
+    color: #ff0000;  
+    text-align: center; 
+}
